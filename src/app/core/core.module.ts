@@ -9,7 +9,15 @@ import { CourseItemComponent } from './course-item/course-item.component';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 
 @NgModule({
-  declarations: [NavbarComponent, LayoutComponent, FooterComponent, BreadcrumbsComponent, ToolbarComponent, CourseItemComponent, CoursesPageComponent],
+  declarations: [
+    NavbarComponent,
+    LayoutComponent,
+    FooterComponent,
+    BreadcrumbsComponent,
+    ToolbarComponent,
+    CourseItemComponent,
+    CoursesPageComponent
+  ],
   imports: [
     CommonModule
   ],

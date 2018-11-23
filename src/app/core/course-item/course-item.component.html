@@ -1,7 +1,9 @@
 <div class="card mb-3">
   <div class="card-body">
-    <h5 class="card-title">{{ courseItem.title }}</h5>
+    <h5 class="card-title">{{ courseItem.title }} <span class="badge badge-info">{{courseItem.duration}} mins</span></h5>
     <hr>
     <p class="card-text">{{ courseItem.description }}</p>
+    <p>The course ID is {{courseItem.id}}</p>
+    <p>Was created {{courseItem.creationDate}}</p>
   </div>
 </div>

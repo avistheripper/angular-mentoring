@@ -12,7 +12,7 @@ export class CoursesPageComponent implements OnInit {
       id: 12,
       title: 'Video Course Java',
       creationDate: '21-11-2017',
-      duration: 44,
+      duration: 40,
       description: 'Best Java 8 course ever.'
 
     },
@@ -20,7 +20,7 @@ export class CoursesPageComponent implements OnInit {
       id: 13,
       title: 'Tech talk Golang',
       creationDate: '21-11-2017',
-      duration: 44,
+      duration: 120,
       description: 'Why did they invent Go?'
 
     },
@@ -28,7 +28,7 @@ export class CoursesPageComponent implements OnInit {
       id: 14,
       title: 'Course Angular 7',
       creationDate: '21-11-2017',
-      duration: 44,
+      duration: 34,
       description: 'Bring it on with Angular!'
 
     }

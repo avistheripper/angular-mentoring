@@ -32,7 +32,7 @@ export class CoursesPageComponent implements OnInit {
       description: 'Bring it on with Angular!'
 
     }
-  ]
+  ];
   constructor() { }
 
   ngOnInit() {

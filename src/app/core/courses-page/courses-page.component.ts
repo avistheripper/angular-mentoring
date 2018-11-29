@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CourseItem} from '../course-item';
+import {CourseItemModel} from '../course-item';
 
 @Component({
   selector: 'app-courses-page',
@@ -7,7 +7,7 @@ import {CourseItem} from '../course-item';
   styleUrls: ['./courses-page.component.css']
 })
 export class CoursesPageComponent implements OnInit {
-  public coursesMock: CourseItem[] = [
+  public coursesMock: CourseItemModel[] = [
     {
       id: 12,
       title: 'Video Course Java',

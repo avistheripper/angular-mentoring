@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import {CourseItemModel} from '../course-item';
 
 @Component({
@@ -6,8 +7,8 @@ import {CourseItemModel} from '../course-item';
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.css']
 })
-export class CoursesPageComponent implements OnInit {
-  public coursesMock: CourseItemModel[] = [
+export class CoursesPageComponent {
+  public coursesMock: Array<CourseItemModel> = [
     {
       id: 12,
       title: 'Video Course Java',
@@ -33,9 +34,9 @@ export class CoursesPageComponent implements OnInit {
 
     }
   ];
-  constructor() { }
 
-  ngOnInit() {
-  }
+  public logMessage(id: number): void {
+    console.log(id);
+}
 
 }

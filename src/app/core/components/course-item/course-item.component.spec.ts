@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseItemComponent } from './course-item.component';
-import {CourseItemModel} from '../course-item';
+import {CourseItemModel} from '../../models/course-item';
 
 describe('CourseItemComponent', () => {
   let component: CourseItemComponent;
@@ -25,9 +25,5 @@ describe('CourseItemComponent', () => {
     fixture = TestBed.createComponent(CourseItemComponent);
     component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
-  });
-  it('should raise the selected id when clicked', () => {
-    const sut: CourseItemComponent = new CourseItemComponent();
-
   });
 });

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {CourseItemModel} from '../course-item';
+import {CourseItemModel} from '../../models/course-item';
 
 @Component({
   selector: 'app-courses-page',

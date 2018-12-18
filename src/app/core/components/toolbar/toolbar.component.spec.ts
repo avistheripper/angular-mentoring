@@ -10,7 +10,7 @@ describe('ToolbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ToolbarComponent ],
-      schemas: [NO_ERRORS_SCHEMA ]
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

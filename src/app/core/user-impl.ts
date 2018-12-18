@@ -1,4 +1,4 @@
-import {UserModel} from './user';
+import {UserModel} from './models/user';
 
 export class UserImpl implements UserModel {
     public id: 24;

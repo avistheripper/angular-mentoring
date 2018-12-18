@@ -1,25 +1,33 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseItemComponent } from './course-item.component';
+import {CourseItemModel} from '../course-item';
 
 describe('CourseItemComponent', () => {
   let component: CourseItemComponent;
   let fixture: ComponentFixture<CourseItemComponent>;
 
-  beforeEach(async(() => {
+  const courseItem: CourseItemModel = {
+    id: 12,
+    title: 'testing course',
+    creationDate: '21-11-17',
+    duration: 122,
+    description: 'Mock course'
+  };
+
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [ CourseItemComponent ]
     })
     .compileComponents();
   }));
-
-  beforeEach(() => {
+  it('should create CourseItem component', () => {
     fixture = TestBed.createComponent(CourseItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+    component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
+  });
+  it('should raise the selected id when clicked', () => {
+    const sut: CourseItemComponent = new CourseItemComponent();
+
   });
 });

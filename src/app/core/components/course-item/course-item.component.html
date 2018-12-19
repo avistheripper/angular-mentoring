@@ -2,9 +2,17 @@
     <div class="row">
       <div class="col-10">
         <div class="row">
-          <div class="col-4"><h5 class="p-1 course-title">{{ courseItem.title }}</h5></div>
-          <div class="col-4"></div>
-          <div class="col-4"><span class="badge badge-info">{{courseItem.duration}} mins, {{courseItem.creationDate}}</span></div>
+          <div class="col-4"><h5 class="p-1 course-title">{{ courseItem.title | uppercase }}</h5></div>
+          <div class="col-4">
+            <i *ngIf="courseItem.topRated"
+               [ngClass]="{'rated': courseItem.topRated}"
+               class="fa fa-star"
+            ></i>
+          </div>
+          <div class="col-4">
+            <span class="badge badge-info">
+              Duration: {{courseItem.duration | timePrecision}}, Date: {{courseItem.creationDate | date:"MM/dd/yy"}}
+            </span></div>
         </div>
         <div class="row">
           <div class="col-12">

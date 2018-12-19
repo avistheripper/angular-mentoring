@@ -9,12 +9,17 @@ import { ToolbarModule } from './components/toolbar/toolbar.module';
 import { CourseItemModule } from './components/course-item/course-item.module';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { HomeComponent } from './components/home/home.component';
+import { BorderDirective } from '../shared/directives';
+import { EmptyPageComponent } from './components/empty-page/empty-page.component';
+import { PipesModule } from '../shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     CoursesPageComponent,
-    HomeComponent
+    HomeComponent,
+    BorderDirective,
+    EmptyPageComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +27,8 @@ import { HomeComponent } from './components/home/home.component';
     CourseItemModule,
     FooterModule,
     NavbarModule,
-    ToolbarModule
+    ToolbarModule,
+    PipesModule
   ],
   exports: [
     LayoutComponent,

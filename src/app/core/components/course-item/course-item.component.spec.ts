@@ -1,23 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { CourseItemComponent } from './course-item.component';
-import {CourseItemModel} from '../../models/course-item';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 describe('CourseItemComponent', () => {
   let component: CourseItemComponent;
   let fixture: ComponentFixture<CourseItemComponent>;
 
-  const courseItem: CourseItemModel = {
-    id: 12,
-    title: 'testing course',
-    creationDate: '21-11-17',
-    duration: 122,
-    description: 'Mock course'
-  };
-
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseItemComponent ]
+      imports: [ PipesModule ],
+      declarations: [ CourseItemComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

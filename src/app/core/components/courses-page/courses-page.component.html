@@ -1,5 +1,12 @@
 <app-breadcrumbs></app-breadcrumbs>
 <app-toolbar></app-toolbar>
 <div class="container">
-  <app-course-item (valueChange)='logMessage($event)' *ngFor="let item of coursesMock" [courseItem]="item"></app-course-item>
+  <app-course-item
+    (valueChange)='logMessage($event)'
+    *ngFor="let item of coursesMock | orderBy: 'creationDate'"
+    [courseItem]="item"
+    [appCourseBorder]="item"
+  >
+</app-course-item>
+    <app-empty-page *ngIf="!coursesMock.length"></app-empty-page>
 </div>

@@ -32,7 +32,6 @@
       "spaces"
     ],
     "interface-name": [true, "never-prefix"],
-    "jsdoc-format": true,
     "label-position": true,
     "max-line-length": [
       true,
@@ -70,8 +69,7 @@
       "timeEnd",
       "trace"
     ],
-    "no-construct": true,
-    "no-parameter-properties": true,
+    "no-constructor-vars": true,
     "no-debugger": true,
     "no-duplicate-variable": true,
     "no-empty": true,

@@ -3,19 +3,19 @@ import { CommonModule } from '@angular/common';
 
  import { CourseItemComponent } from './course-item.component';
 import { PipesModule } from '../../../shared/pipes/pipes.module';
+import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 
  @NgModule({
   declarations: [
-    CourseItemComponent,
-    PipesModule
+    CourseItemComponent
   ],
   imports: [
     CommonModule,
-    PipesModule
+    PipesModule,
+    DirectivesModule
   ],
   exports: [
     CourseItemComponent
   ]
 })
-
  export class CourseItemModule {}

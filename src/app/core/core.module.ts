@@ -8,19 +8,17 @@ import { BreadcrumbsModule } from './components/breadcrumbs/breadcrumbs.module';
 import { ToolbarModule } from './components/toolbar/toolbar.module';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { HomeComponent } from './components/home/home.component';
-import { BorderDirective } from '../shared/directives';
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
 import { PipesModule } from '../shared/pipes/pipes.module';
-import { CourseItemComponent } from './components/course-item/course-item.component';
+import { DirectivesModule } from '../shared/directives/directives.module';
+import { CourseItemModule } from './components/course-item/course-item.module';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     CoursesPageComponent,
     HomeComponent,
-    BorderDirective,
-    EmptyPageComponent,
-    CourseItemComponent
+    EmptyPageComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +26,9 @@ import { CourseItemComponent } from './components/course-item/course-item.compon
     FooterModule,
     NavbarModule,
     ToolbarModule,
-    PipesModule
+    CourseItemModule,
+    PipesModule,
+    DirectivesModule
   ],
   exports: [
     LayoutComponent,

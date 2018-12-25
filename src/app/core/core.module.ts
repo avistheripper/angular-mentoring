@@ -9,9 +9,8 @@ import { ToolbarModule } from './components/toolbar/toolbar.module';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { HomeComponent } from './components/home/home.component';
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
-import { PipesModule } from '../shared/pipes/pipes.module';
-import { DirectivesModule } from '../shared/directives/directives.module';
 import { CourseItemModule } from './components/course-item/course-item.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { CourseItemModule } from './components/course-item/course-item.module';
     NavbarModule,
     ToolbarModule,
     CourseItemModule,
-    PipesModule,
-    DirectivesModule
+    SharedModule
   ],
   exports: [
     LayoutComponent,

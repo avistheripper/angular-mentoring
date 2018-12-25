@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
  import { CourseItemComponent } from './course-item.component';
-import { PipesModule } from '../../../shared/pipes/pipes.module';
-import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
  @NgModule({
   declarations: [
@@ -11,8 +10,7 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
   ],
   imports: [
     CommonModule,
-    PipesModule,
-    DirectivesModule
+    SharedModule
   ],
   exports: [
     CourseItemComponent

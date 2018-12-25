@@ -5,7 +5,8 @@
     (valueChange)='logMessage($event)'
     *ngFor="let item of coursesMock | orderBy: 'creationDate'"
     [courseItem]="item"
-    [appCourseBorder]="item"
+    appCourseBorder
+    [courseBorder]="item"
   >
 </app-course-item>
     <app-empty-page *ngIf="!coursesMock.length"></app-empty-page>

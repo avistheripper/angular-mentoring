@@ -9,14 +9,14 @@ import {CourseItemModel} from '../../models/course-item';
 })
 export class CourseItemComponent implements OnInit {
   @Input() public courseItem: CourseItemModel;
-  @Output() public valueChange: EventEmitter<number> = new EventEmitter();
+  @Output() public courseDelete: EventEmitter<number> = new EventEmitter();
 
   public ngOnInit (): void {
     console.log(`${this.courseItem.title} has been loaded!`);
   }
 
   public deleteHandle(id: number): void {
-    this.valueChange.emit(id);
+    this.courseDelete.emit(id);
   }
 
 }

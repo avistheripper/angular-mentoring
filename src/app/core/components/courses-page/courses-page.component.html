@@ -2,7 +2,7 @@
 <app-toolbar></app-toolbar>
 <div class="container">
   <app-course-item
-    (valueChange)='logMessage($event)'
+    (courseDelete)='onCourseDelete($event)'
     *ngFor="let item of coursesMock | orderBy: 'creationDate'"
     [courseItem]="item"
     appCourseBorder

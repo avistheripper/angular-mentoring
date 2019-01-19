@@ -11,6 +11,10 @@ import { HomeComponent } from './components/home/home.component';
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
 import { CourseItemModule } from './components/course-item/course-item.module';
 import { SharedModule } from '../shared/shared.module';
+import { CoursesService } from '../services/courses.service';
+import { AuthService } from '../services/auth.service';
+import { LoginPageModule } from '../core/components/login-page/login-page.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,9 +25,11 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     BreadcrumbsModule,
     FooterModule,
     NavbarModule,
+    LoginPageModule,
     ToolbarModule,
     CourseItemModule,
     SharedModule
@@ -33,7 +39,9 @@ import { SharedModule } from '../shared/shared.module';
     BreadcrumbsModule,
     FooterModule,
     NavbarModule,
-    ToolbarModule
-    ]
+    ToolbarModule,
+    LoginPageModule
+    ],
+    providers: [CoursesService, AuthService]
 })
 export class CoreModule { }

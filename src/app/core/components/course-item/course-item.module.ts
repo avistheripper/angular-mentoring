@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
- import { CourseItemComponent } from './course-item.component';
+import { CourseItemComponent } from './course-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
- @NgModule({
+@NgModule({
   declarations: [
     CourseItemComponent
   ],

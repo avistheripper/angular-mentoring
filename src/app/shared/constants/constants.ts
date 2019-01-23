@@ -9,3 +9,5 @@ export const COLOR_SET: colorSet = {
     blue: 'blue',
     grey: 'grey'
 };
+
+export const localStorageConfig: string = 'userInfo';

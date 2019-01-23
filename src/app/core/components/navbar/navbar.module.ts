@@ -8,7 +8,7 @@ import { NavbarComponent } from './navbar.component';
         NavbarComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
     ],
     exports: [
         NavbarComponent

@@ -1,0 +1,61 @@
+<div class="jumbotron">
+  <h2>Create and edit a course</h2>
+  <div class="form-group">
+    <label for="exampleFormControlInput">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput"
+      placeholder="Name of your course"
+      [(ngModel)]="course.title"
+      >
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea">Description</label>
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea"
+      rows="5"
+      [(ngModel)]="course.description"
+      >
+    </textarea>
+  </div>
+  <div class=" form-row form-group">
+    <div class="col-sm-3">
+        <label for="courseDate">Date</label>
+        <input
+          type="date"
+          id="courseDate"
+          class="form-control"
+          [(ngModel)]="course.creationDate"
+          >
+    </div>
+  </div>
+  <div class=" form-row form-group">
+      <div class="col-sm-3">
+          <label for="courseDuration">Duration</label>
+          <input
+            type="number"
+            id="courseDuration"
+            class="form-control"
+            [(ngModel)]="course.duration"
+            >
+      </div>
+      <div class="col-sm-3">
+          <label for="formattedTime">Formatted time</label>
+         <h5 id="formattedTime" *ngIf="course.duration">{{ course.duration | timePrecision }}</h5>
+      </div>
+    </div>
+  <div class="form-group">
+      <label for="courseAuthor">Authors</label>
+      <input
+        type="text"
+        class="form-control"
+        id="courseAuthor"
+        placeholder="Authors"
+        [(ngModel)]="course.authors"
+        >
+  </div>
+  <button type="button" class="btn btn-primary btn-lg" (click)="onSave()">Save</button>
+  <button type="button" class="btn btn-secondary btn-lg ml-2" (click)="onCancel()">Cancel</button>
+</div>

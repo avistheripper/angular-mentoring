@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class ToolbarComponent {
+  public searchQuery: string;
   public logQuery(value: string): void {
     console.log(value);
   }

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoursesPageComponent } from './core/components/courses-page/courses-page.component';
 import { HomeComponent } from './core/components/home/home.component';
 import { LoginPageComponent } from './core/components/login-page/login-page.component';
+import { CourseEditPageComponent } from './core/components/course-edit-page/course-edit-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+    path: 'create',
+    component: CourseEditPageComponent
+  },
+  {
+    path: 'edit/:id',
+    component: CourseEditPageComponent
   }
 ];
 

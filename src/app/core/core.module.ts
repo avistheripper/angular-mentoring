@@ -15,13 +15,15 @@ import { CoursesService } from '../services/courses.service';
 import { AuthService } from '../services/auth.service';
 import { LoginPageModule } from '../core/components/login-page/login-page.module';
 import { FormsModule } from '@angular/forms';
+import { CourseEditPageComponent } from './components/course-edit-page/course-edit-page.component';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     CoursesPageComponent,
     HomeComponent,
-    EmptyPageComponent
+    EmptyPageComponent,
+    CourseEditPageComponent
   ],
   imports: [
     CommonModule,

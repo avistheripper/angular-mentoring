@@ -1,4 +1,4 @@
-import { CourseItemModel } from "../core/models/course-item";
+import { CourseItemModel } from '../core/models/course-item';
 
 export const COURSES_MOCK: Array<CourseItemModel> = [
     {

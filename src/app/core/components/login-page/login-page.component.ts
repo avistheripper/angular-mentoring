@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class LoginPageComponent {
-  public username: string;
-  public password: string;
   private authService: AuthService;
   private router: Router;
+  public username: string;
+  public password: string;
   constructor(
     authService: AuthService,
     router: Router

@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class LayoutComponent implements OnInit {
-  public isAuth: boolean;
   private authService: AuthService;
-  private router: Router
+  private router: Router;
+  public isAuth: boolean;
   constructor(
     authService: AuthService,
     router: Router
@@ -20,8 +20,8 @@ export class LayoutComponent implements OnInit {
     }
 
   public ngOnInit(): void {
-    const isNotAuth = !this.authService.isAuthenticated();
-    if (isNotAuth) {
+    const isNotAuthenticated: boolean = !this.authService.isAuthenticated();
+    if (isNotAuthenticated) {
       this.router.navigate(['/login']);
     }
   }

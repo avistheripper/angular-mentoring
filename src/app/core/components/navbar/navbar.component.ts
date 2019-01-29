@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class NavbarComponent implements OnInit {
-  public isAuth: boolean;
   private authService: AuthService;
   private router: Router;
+  public isAuth: boolean;
   constructor(
     authService: AuthService,
     router: Router

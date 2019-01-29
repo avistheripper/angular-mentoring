@@ -9,9 +9,8 @@ import { CoursesService } from 'src/app/services/courses.service';
   styles: []
 })
 export class CoursesPageComponent implements OnInit {
-  public coursesMock: Array<CourseItemModel>;
   private courseService: CoursesService;
-
+  public coursesMock: Array<CourseItemModel>;
   constructor(courseService: CoursesService) {
     this.courseService = courseService;
   }

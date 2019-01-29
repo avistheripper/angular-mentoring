@@ -28,7 +28,7 @@ export class CoursesService {
 
   public removeCourse(id: number): Array<CourseItemModel> {
     if (confirm('Are you sure about removing this course?')) {
-      const indexToRemove = this.coursesMock.findIndex(course => course.id === id);
+      const indexToRemove: number = this.coursesMock.findIndex(course => course.id === id);
       this.coursesMock.splice(indexToRemove, 1);
       return this.coursesMock;
     }

@@ -1,8 +1,6 @@
-import {User} from './user';
+import {UserModel} from './models/user';
 
-
-export class UserImpl implements User {
-    id: 24;
-    firstName: 'Allan';
-    lastName: 'Richmond';
+export class UserImpl implements UserModel {
+    public username: 'AllanRich';
+    public id: 24;
 }

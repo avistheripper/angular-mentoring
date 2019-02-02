@@ -1,0 +1,20 @@
+<nav class="navbar navbar-dark bg-dark mb-5">
+  <a class="navbar-brand" href="/">Video Courses</a>
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav" *ngIf="isAuth">
+      <a class="nav-item nav-link active" href="/about">About</a>
+      <a class="nav-item nav-link" href="/">Courses</a>
+      <a class="nav-item nav-link" href="#">Contact</a>
+      <a class="nav-item nav-link" href="https://github.com/avistheripper" target="_blank">
+        <i class="fa fa-github"></i>
+      </a>
+    </div>
+  </div>
+  <div class="navbar-expand ml-auto navbar-nav">
+    <div class="navbar-nav">
+      <div class="btn-group">
+          <button class="nav-item btn btn-danger" *ngIf="isAuth" (click)="onLogOut();">Log off</button>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,13 @@
+<app-breadcrumbs></app-breadcrumbs>
+<app-toolbar></app-toolbar>
+<div class="container">
+  <app-course-item
+    (courseDelete)='onCourseDelete($event)'
+    *ngFor="let item of coursesMock | orderBy: 'creationDate'"
+    [courseItem]="item"
+    appCourseBorder
+    [courseBorder]="item"
+  >
+</app-course-item>
+    <app-empty-page *ngIf="!coursesMock.length"></app-empty-page>
+</div>

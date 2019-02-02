@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-6">
+          <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name, fragment or date"
+                [(ngModel)]="searchQuery"
+                >
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2"
+                  (click)="logQuery(searchQuery)"
+                >
+                  Search
+                </button>
+              </div>
+           </div>
+      </div>
+      <div class="col-sm-5">
+      </div>
+      <div class="col-sm-1">
+        <a class="btn btn-success" href='/create'>Add course</a>
+      </div>
+  </div>
+</div>

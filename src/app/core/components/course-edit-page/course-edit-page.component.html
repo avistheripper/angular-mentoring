@@ -1,44 +1,55 @@
-<div class="jumbotron">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/']">Courses</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ course.title }}</li>
+    </ol>
+</nav>
+
+<div class="jumbotron mb-5">
   <h2>Create and edit a course</h2>
   <div class="form-group">
-    <label for="exampleFormControlInput">Title</label>
+    <label for="titleInput">Title *required</label>
     <input
       type="text"
       class="form-control"
-      id="exampleFormControlInput"
+      id="titleInput"
       placeholder="Name of your course"
       [(ngModel)]="course.title"
+      required
       >
   </div>
   <div class="form-group">
-    <label for="exampleFormControlTextarea">Description</label>
+    <label for="descriptionTextarea">Description *required</label>
     <textarea
       class="form-control"
-      id="exampleFormControlTextarea"
+      id="descriptionTextarea"
       rows="5"
       [(ngModel)]="course.description"
+      required
       >
     </textarea>
   </div>
   <div class=" form-row form-group">
     <div class="col-sm-3">
-        <label for="courseDate">Date</label>
+        <label for="courseDate">Date *required</label>
         <input
           type="date"
           id="courseDate"
           class="form-control"
           [(ngModel)]="course.creationDate"
+          required
           >
     </div>
   </div>
   <div class=" form-row form-group">
       <div class="col-sm-3">
-          <label for="courseDuration">Duration</label>
+          <label for="courseDuration">Duration *required</label>
           <input
             type="number"
             id="courseDuration"
             class="form-control"
             [(ngModel)]="course.duration"
+            required
             >
       </div>
       <div class="col-sm-3">

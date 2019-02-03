@@ -11,6 +11,10 @@
     </div>
   </div>
   <div class="navbar-expand ml-auto navbar-nav">
+  <span class="navbar-text mr-5" *ngIf="userName">
+      <i class="fa fa-user mr-1"></i>
+    {{ userName }}
+  </span>
     <div class="navbar-nav">
       <div class="btn-group">
           <button class="nav-item btn btn-danger" *ngIf="isAuth" (click)="onLogOut();">Log off</button>

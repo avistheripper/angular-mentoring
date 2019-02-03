@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import {ToolbarComponent} from './toolbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -10,6 +11,7 @@ import {ToolbarComponent} from './toolbar.component';
     ],
     imports: [
         CommonModule,
+        RouterModule,
         FormsModule
     ],
     exports: [

@@ -16,8 +16,10 @@ export class AuthService {
   }
 
   public getUserInfo(): string {
-    const { username } = JSON.parse(localStorage.getItem(localStorageConfig));
-    return username;
+    const userInfo: UserModel = JSON.parse(localStorage.getItem(localStorageConfig));
+    if (userInfo) {
+      return userInfo.username;
+    }
   }
 
   public isAuthenticated(): boolean {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CourseItemComponent } from './course-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     CourseItemComponent

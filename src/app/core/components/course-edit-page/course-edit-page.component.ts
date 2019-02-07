@@ -27,7 +27,7 @@ export class CourseEditPageComponent implements OnInit, OnDestroy {
     this.course = {
       title: '',
       creationDate: '',
-      duration: null,
+      duration: undefined,
       description: ''
     };
    }
@@ -50,8 +50,6 @@ export class CourseEditPageComponent implements OnInit, OnDestroy {
   }
 
   public onSave(): void {
-    // both won't work as expected until Http module and remote data is not available
-    // TODO: needs validation on all fields
     if (this.courseId) {
       this.courseService.updateCourse({
         title: this.course.title,

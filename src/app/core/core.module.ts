@@ -16,6 +16,8 @@ import { AuthService } from '../services/auth.service';
 import { LoginPageModule } from '../core/components/login-page/login-page.module';
 import { FormsModule } from '@angular/forms';
 import { CourseEditPageComponent } from './components/course-edit-page/course-edit-page.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,12 @@ import { CourseEditPageComponent } from './components/course-edit-page/course-ed
     CoursesPageComponent,
     HomeComponent,
     EmptyPageComponent,
-    CourseEditPageComponent
+    CourseEditPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     BreadcrumbsModule,
     FooterModule,

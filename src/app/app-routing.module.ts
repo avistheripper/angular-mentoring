@@ -5,15 +5,18 @@ import { CoursesPageComponent } from './core/components/courses-page/courses-pag
 import { HomeComponent } from './core/components/home/home.component';
 import { LoginPageComponent } from './core/components/login-page/login-page.component';
 import { CourseEditPageComponent } from './core/components/course-edit-page/course-edit-page.component';
+import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
+import { AuthGuard } from './guards/authGuard';
 
 const routes: Routes = [
   {
     path: '',
-    component: CoursesPageComponent
+    component: CoursesPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'about',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'login',
@@ -21,11 +24,17 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: CourseEditPageComponent
+    component: CourseEditPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit/:id',
-    component: CourseEditPageComponent
+    component: CourseEditPageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent
   }
 ];
 

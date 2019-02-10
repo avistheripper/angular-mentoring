@@ -1,36 +1,43 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { CourseItemModel } from '../core/models/course-item';
-import { COURSES_MOCK } from '../utils/mock';
+import { API_URL } from '../shared/constants/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
-  public coursesMock: Array<CourseItemModel> = COURSES_MOCK;
-
-  public getCourses(): Array<CourseItemModel> {
-    return this.coursesMock;
+  private http: HttpClient;
+  constructor(http: HttpClient) {
+    this.http = http;
   }
 
-  public getCourse(id: number): CourseItemModel {
-    return this.coursesMock.find(course => course.id === id);
+  public getCourses(): Observable<CourseItemModel[]> {
+    return this.http.get<CourseItemModel[]>(`${API_URL}/courses`);
   }
 
-  public createCourse(course: CourseItemModel): void {
-    this.coursesMock.push(course);
+  public getCourse(id: number): Observable<CourseItemModel> {
+    return this.http.get<CourseItemModel>(`${API_URL}/courses/${id}`);
+  }
+
+  public createCourse(course: CourseItemModel): Observable<CourseItemModel> {
+    return this.http.post<CourseItemModel>(`${API_URL}/courses`, { params: {course} });
   }
 
   public updateCourse(course: CourseItemModel): void {
-    // find and then update logic here
+    // no need to be implemented for this task
 
   }
 
-  public removeCourse(id: number): Array<CourseItemModel> {
+  public getCourseWithParams(textFragment: string): Observable<CourseItemModel[]> {
+    return this.http.get<CourseItemModel[]>(`${API_URL}/courses`, { params:  {textFragment}});
+  }
+
+  public removeCourse(id: number): Observable<void> {
     if (confirm('Are you sure about removing this course?')) {
-      const indexToRemove: number = this.coursesMock.findIndex(course => course.id === id);
-      this.coursesMock.splice(indexToRemove, 1);
-      return this.coursesMock;
+      return this.http.delete<void>(`${API_URL}/courses/${id}`);
     }
   }
 }

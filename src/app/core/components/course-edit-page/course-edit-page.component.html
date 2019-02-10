@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a [routerLink]="['/']">Courses</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ course.title }}</li>
+      <li class="breadcrumb-item active" aria-current="page">{{ course.name }}</li>
     </ol>
 </nav>
 
@@ -14,7 +14,7 @@
       class="form-control"
       id="titleInput"
       placeholder="Name of your course"
-      [(ngModel)]="course.title"
+      [(ngModel)]="course.name"
       required
       >
   </div>
@@ -36,7 +36,7 @@
           type="date"
           id="courseDate"
           class="form-control"
-          [(ngModel)]="course.creationDate"
+          [(ngModel)]="course.date"
           required
           >
     </div>

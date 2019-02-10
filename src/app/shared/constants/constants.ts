@@ -7,7 +7,9 @@ type colorSet = {
 export const COLOR_SET: colorSet = {
     green: 'green',
     blue: 'blue',
-    grey: 'grey'
+    grey: 'rgba(0, 0, 0, 0.125)'
 };
 
-export const localStorageConfig: string = 'userInfo';
+export const localStorageConfig: string = 'userToken';
+
+export const API_URL: string = 'http://localhost:3004';

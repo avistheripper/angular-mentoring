@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { NavbarModule } from './components/navbar/navbar.module';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -18,6 +19,9 @@ import { FormsModule } from '@angular/forms';
 import { CourseEditPageComponent } from './components/course-edit-page/course-edit-page.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from '../helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
+    ScrollingModule,
     RouterModule,
     FormsModule,
     BreadcrumbsModule,
@@ -48,6 +54,11 @@ import { RouterModule } from '@angular/router';
     ToolbarModule,
     LoginPageModule
     ],
-    providers: [CoursesService, AuthService]
+    providers: [
+      CoursesService,
+      AuthService,
+      HttpClientModule,
+      {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    ]
 })
 export class CoreModule { }

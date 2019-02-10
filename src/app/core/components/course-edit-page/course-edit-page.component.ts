@@ -14,6 +14,7 @@ export class CourseEditPageComponent implements OnInit, OnDestroy {
   private router: Router;
   public course: CourseItemModel;
   public routeSubscription: Subscription;
+  public courseSubscription: Subscription;
   public courseId: number;
 
   constructor(
@@ -25,49 +26,51 @@ export class CourseEditPageComponent implements OnInit, OnDestroy {
     this.courseService = courseService;
     this.router = router;
     this.course = {
-      title: '',
-      creationDate: '',
+      name: '',
+      date: '',
       duration: undefined,
       description: ''
     };
    }
 
   public ngOnInit(): void {
-    this.routeSubscription = this.activeRoute.params.subscribe(params => {
-      this.courseId = +params.id;
-      if (this.courseId) {
-        this.initCourseEdit();
-      }
+    this.routeSubscription = this.activeRoute.params
+      .subscribe(params => {
+        this.courseId = +params.id;
+        if (this.courseId) {
+          this.initCourseEdit();
+        }
     });
   }
 
   public ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
+    if (this.courseSubscription) { this.courseSubscription.unsubscribe(); }
   }
 
   public initCourseEdit(): void {
-    this.course = this.courseService.getCourse(this.courseId);
+    this.courseSubscription = this.courseService.getCourse(this.courseId)
+      .subscribe(data => this.course = data);
   }
 
   public onSave(): void {
     if (this.courseId) {
       this.courseService.updateCourse({
-        title: this.course.title,
-        creationDate: this.course.creationDate,
+        name: this.course.name,
+        date: this.course.date,
         duration: this.course.duration,
         description: this.course.description
       });
     } else {
-      this.courseService.createCourse({
-        id: Math.floor(Math.random() * 100),
-        title: this.course.title,
-        creationDate: this.course.creationDate,
-        duration: this.course.duration,
-        description: this.course.description,
-        topRated: false
-      });
+      this.courseSubscription
+        .add(this.courseService.createCourse({
+          name: this.course.name,
+          duration: this.course.duration,
+          date: this.course.date,
+          description: this.course.description,
+          topRated: false
+      }).subscribe(() => this.router.navigate(['/'])));
     }
-    this.router.navigate(['/']);
   }
 
   public onCancel(): void {

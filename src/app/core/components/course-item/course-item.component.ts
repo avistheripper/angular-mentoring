@@ -13,7 +13,7 @@ export class CourseItemComponent implements OnInit {
   @Output() public courseDelete: EventEmitter<number> = new EventEmitter();
 
   public ngOnInit (): void {
-    console.log(`${this.courseItem.title} has been loaded!`);
+    console.log(`${this.courseItem.name} has been loaded!`);
   }
 
   public deleteHandle(id: number): void {

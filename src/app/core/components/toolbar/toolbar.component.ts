@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -6,8 +6,11 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class ToolbarComponent {
+  @Output() public emitSearchQuery: EventEmitter<string> = new EventEmitter();
+
   public searchQuery: string;
+
   public logQuery(value: string): void {
-    console.log(value);
+    this.emitSearchQuery.emit(value);
   }
 }

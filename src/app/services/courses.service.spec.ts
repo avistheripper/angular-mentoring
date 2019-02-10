@@ -1,51 +1,34 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, getTestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CoursesService } from './courses.service';
-import {COURSES_MOCK} from '../utils/mock';
-import { CourseItemModel } from '../core/models/course-item';
+import { API_URL } from '../shared/constants/constants';
 
-describe('CoursesService', () => {
-  beforeEach(async () => TestBed.configureTestingModule({}));
+describe('Courses service', () => {
+  let injector: TestBed;
+  let service: CoursesService;
+  let httpMock: HttpTestingController;
 
-  it('should be created', () => {
-    const service: CoursesService = TestBed.get(CoursesService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CoursesService]
+    });
+    injector = getTestBed();
+    service = injector.get(CoursesService);
+    httpMock = injector.get(HttpTestingController);
   });
-  it('should get courses', async () => {
-    const service: CoursesService = TestBed.get(CoursesService);
-    const courses: CourseItemModel[] = service.getCourses();
-    expect(courses.length).toEqual(3);
-    courses.forEach((course, i) => {
-        expect(courses[i]).toEqual(COURSES_MOCK[i]);
+  afterEach(() => {
+    httpMock.verify();
+  });
+  describe('#getUsers', async () => {
+    it('should return an Observable<CourseItemModel[]>', () => {
+      service.getCourses().subscribe(courses => {
+        expect(courses.length).toBe(30);
       });
-  });
-  it('should get course by id', async () => {
-    const service: CoursesService = TestBed.get(CoursesService);
-    expect(service.getCourse(12)).toEqual({
-      id: 12,
-      title: 'Video Course Java',
-      creationDate: '2017-12-27',
-      duration: 40,
-      description: 'Best Java 8 course ever.',
-      topRated: true
-      });
-  });
-  it('should delete course', async () => {
-    const service: CoursesService = TestBed.get(CoursesService);
-    service.removeCourse(12);
-    expect(service.getCourses().length).toEqual(2);
-  });
-  it('should create course', async () => {
-    const service: CoursesService = TestBed.get(CoursesService);
-    const courseSample: CourseItemModel = {
-      id: 22,
-      title: 'Video Course Java',
-      creationDate: '2017-12-27',
-      duration: 40,
-      description: 'Best Java 8 course ever.',
-      topRated: true
-    };
-    service.createCourse(courseSample);
-    expect(service.getCourse(22)).toEqual(courseSample);
+
+      const req = httpMock.expectOne(`${API_URL}/courses`);
+      expect(req.request.method).toBe('GET');
+    });
   });
 });

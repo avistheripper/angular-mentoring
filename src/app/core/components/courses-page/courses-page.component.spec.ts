@@ -8,6 +8,9 @@ import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { CourseItemComponent } from '../course-item/course-item.component';
 import { EmptyPageComponent } from '../empty-page/empty-page.component';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CoursesService } from 'src/app/services/courses.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CoursesPageComponent', () => {
   let component: CoursesPageComponent;
@@ -15,9 +18,10 @@ describe('CoursesPageComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, PipesModule],
+      imports: [FormsModule, PipesModule, ScrollingModule, HttpClientModule],
       declarations: [ CoursesPageComponent, BreadcrumbsComponent, ToolbarComponent, CourseItemComponent, EmptyPageComponent ],
-      schemas: [ NO_ERRORS_SCHEMA ]
+      schemas: [ NO_ERRORS_SCHEMA ],
+      providers: [ CoursesService ]
     })
     .compileComponents();
   }));

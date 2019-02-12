@@ -13,8 +13,8 @@ import { TestBed } from '@angular/core/testing';
 export class Container {
     public item: CourseItemModel = {
         id: 12,
-        title: 'Video Course Java',
-        creationDate: '2017-12-27',
+        name: 'Video Course Java',
+        date: '2017-12-27',
         duration: 40,
         description: 'Best Java 8 course ever.',
         topRated: true

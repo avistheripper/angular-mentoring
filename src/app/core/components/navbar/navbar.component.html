@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark mb-5">
+<nav class="navbar navbar-dark bg-dark mb-5 fixed-top">
   <a class="navbar-brand" href="/">Video Courses</a>
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav" *ngIf="isAuth">
@@ -13,7 +13,7 @@
   <div class="navbar-expand ml-auto navbar-nav">
   <span class="navbar-text mr-5" *ngIf="userName">
       <i class="fa fa-user mr-1"></i>
-    {{ userName }}
+    {{ userName?.first | uppercase}}
   </span>
     <div class="navbar-nav">
       <div class="btn-group">

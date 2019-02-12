@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styles: []
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnDestroy  {
   private authService: AuthService;
   private router: Router;
+  public authSubscription: Subscription;
   public username: string;
   public password: string;
   constructor(
@@ -21,10 +24,18 @@ export class LoginPageComponent {
     }
 
   public onLogin(): void {
-    this.authService.userLogin({
-      username: this.username,
-      id: Math.floor(Math.random() * 100)
-    });
-    this.router.navigate(['/about']);
+    this.authSubscription = this.authService.userLogin({
+      login: this.username,
+      password: this.password
+    }).subscribe(res => {
+        localStorage.setItem('userToken', res.token);
+        this.router.navigate(['/about']);
+    },
+                 (error: HttpErrorResponse) => console.log(error)
+    );
+  }
+
+  public ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
   }
 }

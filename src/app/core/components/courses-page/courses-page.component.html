@@ -1,13 +1,16 @@
 <app-breadcrumbs></app-breadcrumbs>
-<app-toolbar></app-toolbar>
+<app-toolbar (emitSearchQuery)='onCourseSearch($event)'></app-toolbar>
 <div class="container">
-  <app-course-item
-    (courseDelete)='onCourseDelete($event)'
-    *ngFor="let item of coursesMock | orderBy: 'creationDate'"
-    [courseItem]="item"
-    appCourseBorder
-    [courseBorder]="item"
-  >
-</app-course-item>
-    <app-empty-page *ngIf="!coursesMock.length"></app-empty-page>
+    <cdk-virtual-scroll-viewport itemSize="228" class="courses-viewport scroll-wrapper" *ngIf="courses?.length">
+        <app-course-item
+          class="animated slideInRight"
+          (courseDelete)='onCourseDelete($event)'
+          *cdkVirtualFor="let item of courses | orderBy: 'creationDate'"
+          [courseItem]="item"
+          appCourseBorder
+          [courseBorder]="item"
+        >
+        </app-course-item>
+    </cdk-virtual-scroll-viewport>
+    <app-empty-page *ngIf="!courses?.length"></app-empty-page>
 </div>

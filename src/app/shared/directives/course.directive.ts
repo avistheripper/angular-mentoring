@@ -16,10 +16,11 @@ export class BorderDirective {
 
     @Input('courseBorder') set pickColor(courseItem: CourseItemModel) {
         const currentDateMls: number = new Date().getTime();
-        if (new Date(courseItem.creationDate).getTime() < currentDateMls &&
-        new Date(courseItem.creationDate).getTime() >= currentDateMls - 8.64e7 * 14) {
+        const courseDate: number = new Date(courseItem.date).getTime();
+        if (courseDate < currentDateMls &&
+            courseDate >= currentDateMls - 8.64e7 * 14) {
            this.setColor(COLOR_SET.green);
-        } else if (new Date(courseItem.creationDate).getTime() > currentDateMls) {
+        } else if (courseDate > currentDateMls) {
             this.setColor(COLOR_SET.blue);
         } else {
            this.setColor();

@@ -7,20 +7,11 @@
                 class="form-control"
                 placeholder="Name, fragment or date"
                 [(ngModel)]="searchQuery"
+                (keyup)="logQuery($event)"
                 >
               <div class="input-group-append">
-                <button
-                  class="btn btn-outline-secondary"
-                  type="button"
-                  id="button-addon2"
-                  (click)="logQuery(searchQuery)"
-                >
-                  Search
-                </button>
               </div>
            </div>
-      </div>
-      <div class="col-sm-5">
       </div>
       <div class="col-sm-1">
         <button class="btn btn-success" [routerLink]="['/create']">Add course</button>

@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import {CourseItemModel} from '../../models/course-item';
 import { CoursesService } from 'src/app/services/courses.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { debounceTime, map, filter, switchAll } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-page',
@@ -14,6 +15,7 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
   private courseService: CoursesService;
   private courseServiceSubscription: Subscription;
   public courses: Array<CourseItemModel>;
+  public searchTerm$: Subject<string> = new Subject<string>();
   constructor(courseService: CoursesService) {
     this.courseService = courseService;
   }
@@ -25,6 +27,15 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
   public initCourses(): void {
     this.courseServiceSubscription = this.courseService.getCourses()
       .subscribe(data => this.courses = data);
+    this.searchTerm$.pipe(
+      debounceTime(400),
+      filter(text => text === '' || text.length > 3),
+      map((query: string) => this.courseService.getCourseWithParams(query)),
+      switchAll())
+      .subscribe(res => {
+        this.courses = res;
+      },
+                 (err: HttpErrorResponse) => console.log(err));
   }
   public onCourseDelete(id: number): void {
     this.courseServiceSubscription
@@ -33,12 +44,7 @@ export class CoursesPageComponent implements OnInit, OnDestroy {
   }
 
   public onCourseSearch(queryString: string): void {
-    this.courseServiceSubscription
-      .add(this.courseService.getCourseWithParams(queryString)
-      .subscribe(res => {
-        this.courses = res;
-      },
-                 (error: HttpErrorResponse) => console.log(error)));
+    this.searchTerm$.next(queryString);
   }
 
   public ngOnDestroy(): void {

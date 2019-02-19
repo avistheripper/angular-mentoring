@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private router: Router;
   public authSubscription: Subscription;
   public isAuth: boolean;
+  public userStatus$: Observable<boolean>;
   public userName: { first: string; last: string};
   constructor(
     authService: AuthService,
@@ -23,7 +25,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.router = router;
     }
   public ngOnInit(): void {
-    this.isAuth = this.authService.isAuthenticated();
+    this.userStatus$ = this.authService.getUserStatus()
+      .pipe(map((status) => status));
     this.authSubscription = this.authService.getUserInfo()
       .subscribe(res => this.userName = res.name,
                  (error: HttpErrorResponse) => this.router.navigate(['/login']));
@@ -32,7 +35,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public onLogOut(): void {
     this.authService.userLogout();
     this.router.navigate(['/login']);
-    this.isAuth = false;
   }
 
   public ngOnDestroy(): void {

@@ -10,7 +10,7 @@ export class ToolbarComponent {
 
   public searchQuery: string;
 
-  public logQuery(value: string): void {
-    this.emitSearchQuery.emit(value);
+  public logQuery(event: KeyboardEvent): void {
+    this.emitSearchQuery.emit((<HTMLInputElement>event.target).value);
   }
 }

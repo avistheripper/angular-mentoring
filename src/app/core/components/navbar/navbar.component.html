@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark mb-5 fixed-top">
   <a class="navbar-brand" href="/">Video Courses</a>
   <div class="navbar-expand mr-auto">
-    <div class="navbar-nav" *ngIf="isAuth">
+    <div class="navbar-nav" *ngIf="userStatus$ | async">
       <a class="nav-item nav-link active" href="/about">About</a>
       <a class="nav-item nav-link" href="/">Courses</a>
       <a class="nav-item nav-link" href="#">Contact</a>
@@ -17,7 +17,7 @@
   </span>
     <div class="navbar-nav">
       <div class="btn-group">
-          <button class="nav-item btn btn-danger" *ngIf="isAuth" (click)="onLogOut();">Log off</button>
+          <button class="nav-item btn btn-danger" *ngIf="userStatus$ | async" (click)="onLogOut()">Log off</button>
       </div>
     </div>
   </div>

@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { AuthGuard } from './guards/authGuard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { AuthEffects } from './store/effects/auth.effects';
+import { reducers } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ScrollingModule
+    ScrollingModule,
+    StoreModule.forRoot(reducers, {}),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [
     AuthGuard,

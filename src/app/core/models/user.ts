@@ -1,6 +1,7 @@
 export interface UserModel {
+    token?: string;
     login: string;
-    password: string;
+    password?: string;
 }
 
 export interface UserResponse {

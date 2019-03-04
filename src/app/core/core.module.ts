@@ -25,6 +25,10 @@ import { AuthInterceptor } from '../helpers/auth.interceptor';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderInterceptorService } from '../helpers/loader.interceptor';
 import { LoaderService } from '../services/loader.service';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from '../store/app.state';
+import { AuthEffects } from '../store/effects/auth.effects';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,9 @@ import { LoaderService } from '../services/loader.service';
     LoginPageModule,
     ToolbarModule,
     CourseItemModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot(reducers, {}),
+    EffectsModule.forRoot([AuthEffects])
   ],
   exports: [
     LayoutComponent,

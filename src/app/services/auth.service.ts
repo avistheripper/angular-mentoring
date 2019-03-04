@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 import { UserModel, UserResponse } from '../core/models/user';
@@ -24,9 +24,7 @@ export class AuthService {
 
   public userLogin(user: UserModel): Observable<{token: string}> {
     return this.http.post<{token: string}>(`${API_URL}/auth/login`, user).pipe(
-      tap(res => {
-      localStorage.setItem('userToken', res.token);
-      this.router.navigate(['/about']);
+      tap(() => {
       this.isAuth.next(true);
       }));
   }

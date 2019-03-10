@@ -17,15 +17,13 @@ import {
 
 @Injectable()
 export class AuthEffects {
-  private actions: Actions;
   private authService: AuthService;
   private router: Router;
     constructor(
-      actions: Actions,
+      private actions: Actions,
       authService: AuthService,
       router: Router
     ) {
-      this.actions = actions;
       this.authService = authService;
       this.router = router;
     }

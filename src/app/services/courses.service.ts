@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
-import { CourseItemModel } from '../core/models/course-item';
+import { CourseItemModel, AuthorsModel } from '../core/models/course-item';
 import { API_URL } from '../shared/constants/constants';
 
 @Injectable({
@@ -24,12 +23,11 @@ export class CoursesService {
   }
 
   public createCourse(course: CourseItemModel): Observable<CourseItemModel> {
-    return this.http.post<CourseItemModel>(`${API_URL}/courses`, { params: {course} });
+    return this.http.post<CourseItemModel>(`${API_URL}/courses`, course );
   }
 
-  public updateCourse(course: CourseItemModel): void {
-    // no need to be implemented for this task
-
+  public getAuthors(): Observable<AuthorsModel[]> {
+    return this.http.get<AuthorsModel[]>(`${API_URL}/authors`);
   }
 
   public getCourseWithParams(textFragment: string): Observable<CourseItemModel[]> {

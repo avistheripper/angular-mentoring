@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -14,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { AuthEffects } from './store/effects/auth.effects';
 import { reducers } from './store/app.state';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { reducers } from './store/app.state';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    NgSelectModule,
     CoreModule,
     SharedModule,
     AppRoutingModule,

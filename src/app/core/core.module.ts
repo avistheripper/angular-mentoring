@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { NavbarModule } from './components/navbar/navbar.module';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -43,9 +44,11 @@ import { AuthEffects } from '../store/effects/auth.effects';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ScrollingModule,
     RouterModule,
     FormsModule,
+    NgSelectModule,
     BreadcrumbsModule,
     FooterModule,
     NavbarModule,

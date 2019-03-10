@@ -1,3 +1,8 @@
+export interface AuthorsModel {
+    id: string;
+    name: string;
+}
+
 export interface CourseItemModel {
     id?: number;
     name: string;
@@ -5,5 +10,5 @@ export interface CourseItemModel {
     duration: number;
     description: string;
     topRated?: boolean;
-    authors?: string[];
+    authors?: Array<AuthorsModel>;
 }

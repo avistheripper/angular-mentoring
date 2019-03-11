@@ -7,66 +7,83 @@
 
 <div class="jumbotron mb-5">
   <h2>Create and edit a course</h2>
-  <div class="form-group">
-    <label for="titleInput">Title *required</label>
-    <input
-      type="text"
-      class="form-control"
-      id="titleInput"
-      placeholder="Name of your course"
-      [(ngModel)]="course.name"
-      required
-      >
-  </div>
-  <div class="form-group">
-    <label for="descriptionTextarea">Description *required</label>
-    <textarea
-      class="form-control"
-      id="descriptionTextarea"
-      rows="5"
-      [(ngModel)]="course.description"
-      required
-      >
-    </textarea>
-  </div>
-  <div class=" form-row form-group">
-    <div class="col-sm-3">
-        <label for="courseDate">Date *required</label>
+    <form [formGroup]="courseForm" novalidate>
+      <div class="form-group">
+        <label for="titleInput">Title</label>
+        <div class="alert alert-danger"*ngIf="courseForm.touched && !courseForm.value.name">
+            <p>Title field is required</p>
+        </div>
         <input
-          type="date"
-          id="courseDate"
+          type="text"
           class="form-control"
-          [(ngModel)]="course.date"
-          required
+          id="titleInput"
+          placeholder="Name of your course"
+          formControlName="name"
           >
-    </div>
-  </div>
-  <div class=" form-row form-group">
-      <div class="col-sm-3">
-          <label for="courseDuration">Duration *required</label>
-          <input
-            type="number"
-            id="courseDuration"
-            class="form-control"
-            [(ngModel)]="course.duration"
-            required
-            >
       </div>
-      <div class="col-sm-3">
-          <label for="formattedTime">Formatted time</label>
-         <h5 id="formattedTime" *ngIf="course.duration">{{ course.duration | timePrecision }}</h5>
+      <div class="form-group">
+        <label for="descriptionTextarea">Description</label>
+        <div class="alert alert-danger"*ngIf="courseForm.touched && !courseForm.value.description">
+            <p>Description field is required</p>
+        </div>
+        <textarea
+          class="form-control"
+          id="descriptionTextarea"
+          rows="5"
+          formControlName="description"
+          >
+        </textarea>
       </div>
-    </div>
-  <div class="form-group">
-      <label for="courseAuthor">Authors</label>
-      <input
-        type="text"
-        class="form-control"
-        id="courseAuthor"
-        placeholder="Authors"
-        [(ngModel)]="course.authors"
+      <div class=" form-row form-group">
+        <div class="col-sm-3">
+            <label for="courseDate">Date</label>
+            <div class="alert alert-danger"*ngIf="(courseForm.touched && !courseForm.value.date) || courseForm.errors.date">
+                <p>Field is required with mm/dd/yyyy format' </p>
+            </div>
+            <input
+              type="date"
+              id="courseDate"
+              class="form-control"
+              formControlName="date"
+              >
+        </div>
+      </div>
+      <div class=" form-row form-group">
+          <div class="col-sm-3">
+              <label for="courseDuration">Duration</label>
+              <div class="alert alert-danger"*ngIf="courseForm.touched && !courseForm.value.duration">
+                  <p>Duration field is required with a number value</p>
+              </div>
+              <input
+                type="number"
+                id="courseDuration"
+                class="form-control"
+                formControlName="duration"
+                >
+          </div>
+          <div class="col-sm-3">
+              <label for="formattedTime">Formatted time</label>
+            <h5 id="formattedTime" *ngIf="course.duration">{{ course.duration | timePrecision }}</h5>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="courseAuthor">Authors</label>
+          <ng-select  [items]="authorsList$ | async"
+                      bindLabel="name"
+                      bindValue="id"
+                      [multiple]="true"
+                      placeholder="Select authors"
+                      formControlName="authors"
+          >
+          </ng-select>
+        </div>
+        <button type="button"
+                class="btn btn-primary btn-lg"
+                (click)="onSave()"
+                [disabled]="courseForm.pristine || courseForm.invalid"
         >
-  </div>
-  <button type="button" class="btn btn-primary btn-lg" (click)="onSave()">Save</button>
-  <button type="button" class="btn btn-secondary btn-lg ml-2" (click)="onCancel()">Cancel</button>
+        Save
+      </button>
+        <button type="button" class="btn btn-secondary btn-lg ml-2" (click)="onCancel()">Cancel</button>
+  </form>
 </div>

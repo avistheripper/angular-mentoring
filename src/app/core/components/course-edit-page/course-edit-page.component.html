@@ -6,10 +6,10 @@
 </nav>
 
 <div class="jumbotron mb-5">
-  <h2>Create and edit a course</h2>
+  <h1>{{ 'course.create' | translate }}</h1>
     <form [formGroup]="courseForm" novalidate>
       <div class="form-group">
-        <label for="titleInput">Title</label>
+        <label for="titleInput">{{ 'course.title' | translate }}</label>
         <div class="alert alert-danger"*ngIf="courseForm.touched && !courseForm.value.name">
             <p>Title field is required</p>
         </div>
@@ -22,7 +22,7 @@
           >
       </div>
       <div class="form-group">
-        <label for="descriptionTextarea">Description</label>
+        <label for="descriptionTextarea">{{ 'course.description' | translate }}</label>
         <div class="alert alert-danger"*ngIf="courseForm.touched && !courseForm.value.description">
             <p>Description field is required</p>
         </div>
@@ -36,8 +36,8 @@
       </div>
       <div class=" form-row form-group">
         <div class="col-sm-3">
-            <label for="courseDate">Date</label>
-            <div class="alert alert-danger"*ngIf="(courseForm.touched && !courseForm.value.date) || courseForm.errors.date">
+            <label for="courseDate">{{ 'course.date' | translate }}</label>
+            <div class="alert alert-danger"*ngIf="(courseForm.touched && !courseForm.value.date) || courseForm.errors">
                 <p>Field is required with mm/dd/yyyy format' </p>
             </div>
             <input
@@ -50,7 +50,7 @@
       </div>
       <div class=" form-row form-group">
           <div class="col-sm-3">
-              <label for="courseDuration">Duration</label>
+              <label for="courseDuration">{{ 'course.duration' | translate }}</label>
               <div class="alert alert-danger"*ngIf="courseForm.touched && !courseForm.value.duration">
                   <p>Duration field is required with a number value</p>
               </div>
@@ -62,15 +62,16 @@
                 >
           </div>
           <div class="col-sm-3">
-              <label for="formattedTime">Formatted time</label>
+              <label for="formattedTime">{{ 'course.formatted' | translate }}</label>
             <h5 id="formattedTime" *ngIf="course.duration">{{ course.duration | timePrecision }}</h5>
           </div>
         </div>
         <div class="form-group">
-          <label for="courseAuthor">Authors</label>
+          <label for="courseAuthor">{{ 'course.authors' | translate }}</label>
           <ng-select  [items]="authorsList$ | async"
                       bindLabel="name"
                       bindValue="id"
+                      virtualScroll="true"
                       [multiple]="true"
                       placeholder="Select authors"
                       formControlName="authors"

@@ -4,8 +4,12 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { NavbarModule } from './components/navbar/navbar.module';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -26,8 +30,6 @@ import { AuthInterceptor } from '../helpers/auth.interceptor';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderInterceptorService } from '../helpers/loader.interceptor';
 import { LoaderService } from '../services/loader.service';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { reducers } from '../store/app.state';
 import { AuthEffects } from '../store/effects/auth.effects';
 
@@ -57,7 +59,14 @@ import { AuthEffects } from '../store/effects/auth.effects';
     CourseItemModule,
     SharedModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
   exports: [
     LayoutComponent,
@@ -77,3 +86,7 @@ import { AuthEffects } from '../store/effects/auth.effects';
     ]
 })
 export class CoreModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

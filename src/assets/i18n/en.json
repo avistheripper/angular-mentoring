@@ -1,0 +1,33 @@
+{
+    "course.navbar": {
+      "about": "About",
+      "logo": "Video courses",
+      "courses": "Courses",
+      "contact": "Contacts"
+    },
+    "course.create": "Create or edit course",
+    "course.text": "This is a simple demonstration app for ngx-translate",
+    "course.title": "Title",
+    "course.username": "Username",
+    "course.description": "Description",
+    "course.date": "Date",
+    "course.duration": "Duration",
+    "course.formatted": "Formatted time",
+    "course.authors": "Authors",
+    "course.no-data": "No data provided",
+    "course.add-new": "Add new course",
+    "course.explore": "Explore and learn.",
+    "course.home-text": "It uses utility classes for typography and spacing to space content out within the larger container.",
+    "course.login-tip": "Do never share your information with anyone else.",
+    "course.password": "Password",
+    "course.action": {
+      "login": "Log in",
+      "logout": "Log off"
+    },
+    "course.not-found": {
+      "title": "Page you're looking for is not found",
+      "message": "Something went wrong, check the URL you're trying to reach.",
+      "reason": "If a problem will reproduce contact the IT support"
+    }
+
+  }
